@@ -47,8 +47,8 @@
             </tr>
           </thead>
           <tbody>
-            <template v-for='(product,idx) in products'>
-              <tr v-if='products.length > 0' :key='product._id'>
+            <template v-for='(product,idx) in sliceProducts'>
+              <tr v-if='sliceProducts.length > 0' :key='product._id'>
                 <td><img style="height:150px" :src="product.image"></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
@@ -63,16 +63,22 @@
   <n-divider />
 </div>
   </div>
+  <n-pagination v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref,computed } from "vue";
 //import { NInput } from "naive-ui";
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 //const categories = reactive(['肉桂捲', '提拉米蘇','司康','季節限定'])
 const products = reactive([])
 const showModal = ref(false)
+const page = ref(1)
+const pageSize = 5
+const sliceProducts = computed(()=>{
+  return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize))
+})
 const options= [
         {
           label: "肉桂捲",
