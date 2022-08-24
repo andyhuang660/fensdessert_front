@@ -8,6 +8,9 @@
       日本上白糖<br>
     </p>
   </div>
+  
+  <input type="search" v-model="search" placeholder="尋找商品" />
+
   <div class='wrap' style="background:url(../../assets/IMG_1071.PNG)">
     <n-grid cols="1 s:2 m:3" responsive="screen" >
       <n-grid-item v-for="(product,idx) in sliceProducts" :key='idx'>
@@ -22,7 +25,7 @@
             <h3 style="white-space:pre">商品描述:{{form.description}}</h3>
             <h3>${{form.price}}</h3>
             <n-space vertical>
-              <n-input-number v-model:value="form.quantity" :key="form._id" placeholder="購買數量" :min="1"/>
+              <n-input-number v-model:value="form.quantity" :key="form._id" placeholder="購買數量" :min="0"/>
             </n-space>
             <n-button style="margin-top:20px" @click="addCart({ product: form._id, quantity:form.quantity})" strong secondary round color='#893517'>
               加入購物車
@@ -33,7 +36,7 @@
         <h3>NT${{product.price}}</h3>
         <n-form v-model="valid" @submit.prevent='submit'>
           <n-space vertical>
-          <n-input-number v-model:value="product.quantity" placeholder="購買數量" :min="1" style="margin-left:80px"/>
+          <n-input-number v-model:value="product.quantity" placeholder="購買數量" :min="0" style="margin-left:80px"/>
         </n-space>
         </n-form>
         <n-button @click="addCart({ product: product._id, quantity:product.quantity})" strong secondary round color='#893517' style="margin-top:20px;margin-left: 80px;">
@@ -43,7 +46,8 @@
       </n-grid-item>
     </n-grid>
   </div>
-  <n-pagination v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
+  <n-pagination v-if="search===''" v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
+  <n-pagination v-else v-model:page="page" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
 </template>
 
 
@@ -59,12 +63,20 @@ const user = useUserStore()
 const showModal = ref(false)
 const { addCart } = user
 
+
+//分頁,搜尋
 const products = reactive([])
 const page = ref(1)
 const pageSize = 6
+const search = ref('')
 const sliceProducts = computed(()=>{
-  return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize))
+  return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize)).filter(input => input.name.includes(search.value))
 })
+
+// const filterProducts = computed(()=>{
+//   return products.filter(input => input.name.includes(search.value))
+// })
+
 const form = reactive({
   _id: '',
   image: [],

@@ -1,4 +1,5 @@
 <script setup>
+import { useUserStore } from '@/stores/user'
 import { RouterView } from 'vue-router'
 import { NConfigProvider } from 'naive-ui'
 const themeOverrides = {
@@ -8,6 +9,8 @@ const themeOverrides = {
     arrowColor: '#575757',
   }
 }
+const user = useUserStore()
+user.getUser()
 </script>
 
 <template>

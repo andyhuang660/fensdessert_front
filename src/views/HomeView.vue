@@ -20,7 +20,7 @@
   </div>
   <div>
     <n-carousel autoplay :draggable="true">
-      <img class="carousel-img" src="../assets/carousel1-text-1.jpg">
+      <img class="carousel-img" src="@/assets/carousel1-text-1.jpg">
       <img class="carousel-img" src="../assets/carousel2-text.jpg">
       <img class="carousel-img" src="../assets/carousel3-text.jpg">
       <img class="carousel-img" src="../assets/carousel5-text.jpg">
@@ -92,8 +92,7 @@
   </div>
   
   <n-divider />
- 
-<RouterView />
+
    <n-layout-footer style="background-color: #ffee98;justify-content: space-around; padding-top: 30px;" >
     <div class="container">
        <n-grid cols="1 s:2 l:4" responsive="screen">

@@ -134,5 +134,23 @@ export const useUserStore = defineStore({
         })
       }
     },
+    // 抓後端 controller的 getUser拿 token
+    async getUser () {
+      if (this.token.length === 0) return
+      try {
+        const { data } = await apiAuth.get('/users')
+        this.account = data.result.account
+        this.role = data.result.role
+        this.cart = data.result.cart
+      } catch (error) {
+        this.logout()
+      }
+    }
+  },
+  // 改 pinia+這個把token存在LocalStorage
+  // 再把 token放到App.vue(最外層)
+  persist: {
+    key: 'vite-fensdessert',
+    paths: ['token']
   }
 })
