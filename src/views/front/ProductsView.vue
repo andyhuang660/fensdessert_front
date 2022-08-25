@@ -16,7 +16,7 @@
       <n-grid-item v-for="(product,idx) in sliceProducts" :key='idx'>
         <n-card v-if='sliceProducts.length>0'>
           <template #cover>
-            <a @click="openDialog(product._id, idx)" >
+            <a @click="openDialog(product._id)" >
             <img style="height:300px;" :src="product.image"/>
           </a> 
           <n-modal style="width:400px ;" v-model:show="showModal"  preset="card" >
@@ -46,7 +46,7 @@
       </n-grid-item>
     </n-grid>
     <n-pagination v-if="search===''" v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
-    <n-pagination v-else v-model:page="page" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
+    <n-pagination v-else v-model:page="page" v-model:page-size="pageSize" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
   </div>
   </div>
 </template>
@@ -74,10 +74,6 @@ const sliceProducts = computed(()=>{
   return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize)).filter(input => input.name.includes(search.value))
 })
 
-// const filterProducts = computed(()=>{
-//   return products.filter(input => input.name.includes(search.value))
-// })
-
 const form = reactive({
   _id: '',
   image: [],
@@ -88,14 +84,15 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceProducts.value.findIndex(item=>item._id === _id)
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.image = products[idx].image
-    form.name = products[idx].name
-    form.description = products[idx].description
-    form.price = products[idx].price
+    form.image = sliceProducts.value[idx].image
+    form.name = sliceProducts.value[idx].name
+    form.description = sliceProducts.value[idx].description
+    form.price = sliceProducts.value[idx].price
   }
     form.idx = idx
     form.submitting = false

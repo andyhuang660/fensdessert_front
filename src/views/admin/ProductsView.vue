@@ -44,6 +44,7 @@
               <th>價格</th>
               <th>描述</th>
               <th>編輯</th>
+              <th>刪除</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +54,11 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.description }}</td>
-                <td> <n-button color="#ffcb98" @click="openDialog(product._id, idx)">編輯</n-button></td>
+                <td v-if="currentPage === 1"><n-button color="#ffcb98" @click="openDialog(product._id, idx)" :loading="loading"> 編輯 </n-button></td>
+                <td v-if="currentPage > 1"><n-button color="#ffcb98" @click="openDialog(product._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 編輯 </n-button></td>
+
+                <td v-if="currentPage === 1"><n-button color="#ffcb98" @click="del(product._id, idx)" :loading="loading"> 刪除 </n-button></td>
+                <td v-if="currentPage > 1"><n-button color="#ffcb98" @click="del(product._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 刪除 </n-button></td>
               </tr>
             </template>
           </tbody>
@@ -61,7 +66,7 @@
       </n-space>
     </div>
   <n-divider />
-  <n-pagination v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
+  <n-pagination v-model:page="currentPage" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
 </div>
   </div>
 </template>
@@ -74,10 +79,10 @@ import { apiAuth } from '@/plugins/axios'
 //const categories = reactive(['肉桂捲', '提拉米蘇','司康','季節限定'])
 const products = reactive([])
 const showModal = ref(false)
-const page = ref(1)
+const currentPage = ref(1)
 const pageSize = 5
 const sliceProducts = computed(()=>{
-  return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize))
+  return products.slice((currentPage.value*pageSize)-pageSize,(currentPage.value*pageSize))
 })
 const options= [
         {
@@ -207,11 +212,4 @@ td img {
   height: 100%;
 }
 
-/* .n-pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  font-size: 1rem;
-} */
 </style>

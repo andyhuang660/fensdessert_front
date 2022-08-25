@@ -49,7 +49,7 @@
   <div style="width:100%;height: 300px;">
   <h1 style="color:#893517;font-family:'華康布丁體';position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);text-align: center;">一位業餘媽媽的手作甜點
   <br>希望療癒你的味覺 </h1>
-   <img style="position: absolute; right: 450px;" src="../assets/3.jpg" alt="">
+   <!-- <img style="position: absolute; right: 450px;" src="../assets/3.jpg" alt=""> -->
   </div>
   </div>
 

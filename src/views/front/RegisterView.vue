@@ -104,7 +104,7 @@ const register = async () => {
 
 <style scoped>
 .container{
-  height: calc(100vh - 365px) ;
+  /* height: calc(100vh - 365px) ; */
   margin: auto;
   margin-top: 30px;
 }
@@ -153,14 +153,16 @@ const register = async () => {
 
 @media (min-height:400px){
   .container[data-v-23a4ffce]{
-    height: 100%;
+    height: 100% !important;
   }
 }
 
 @media (min-height:768px){
-  .container[data-v-23a4ffce]{
+  .container[data-v-d7a17ed0]{
     height: calc(100vh - 365px) ;
   }
 }
+
+
 
 </style>
