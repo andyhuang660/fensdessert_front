@@ -242,7 +242,7 @@ h2 {
   nav {
     font-size: 1rem;
     /* padding: 1.5rem 0; */
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     justify-content: center;
     align-items: center;

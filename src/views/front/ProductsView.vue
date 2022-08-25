@@ -1,5 +1,5 @@
 <template>
-  <div class="imgDes" style="text-align:center">
+<div class="imgDes" style="text-align:center">
     <!-- <img src="../../assets/IMG_1071.PNG" alt=""> -->
     <h1>-肉桂捲選用材料-</h1>
     <p>
@@ -9,8 +9,8 @@
     </p>
   </div>
   
-  <input type="search" v-model="search" placeholder="尋找商品" />
-
+  <div class="container">
+     <input style="width:200px; margin: 10px auto;display: block;" type="search" v-model="search" placeholder="尋找商品" />
   <div class='wrap' style="background:url(../../assets/IMG_1071.PNG)">
     <n-grid cols="1 s:2 m:3" responsive="screen" >
       <n-grid-item v-for="(product,idx) in sliceProducts" :key='idx'>
@@ -45,9 +45,10 @@
       </n-card>
       </n-grid-item>
     </n-grid>
+    <n-pagination v-if="search===''" v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
+    <n-pagination v-else v-model:page="page" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
   </div>
-  <n-pagination v-if="search===''" v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
-  <n-pagination v-else v-model:page="page" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
+  </div>
 </template>
 
 
@@ -132,22 +133,31 @@ init()
   display:flex;
   margin: auto;
   margin-top: 10px;
+  flex-direction: column;
 }
 .n-grid {
+  width: auto !important;
   gap: 30px !important;
+  margin: auto;
 }
-/* 
-div{
-  width: 300px;
-} */
+
 .imgDes {
   background-image: url(../../assets/IMG_1071.PNG);
-  margin-top: 20px;
 }
 .imgDes img{
   height: 200px;
   width: 100%;
   
 }
-
+.container {
+  width: 80%;
+  margin: auto;
+}
+.n-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 1rem;
+}
 </style>

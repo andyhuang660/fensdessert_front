@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1>1.購物車內容</h1>
     <div class="content">
+      <h1>1.購物車內容</h1>
       <n-space vertical>
         <n-table striped>
           <thead>
@@ -53,11 +53,19 @@
       </div>
       <div class="content">
         <h1>3.匯款資訊</h1>
-        <img class="bank" src="http://osas.npust.edu.tw/alltop/skin/default27/passbook_cover.jpg" >
+        <h2>Fens Dessert 匯款帳號</h2>
+        <h4>帳號：0000 1234 5678</h4>
+        <h4>戶名：芬的甜點股份有限公司台灣分公司</h4>
+        <h4>分行名稱：國泰世華銀行 板橋分行</h4>
+        <h4>分行代號：013</h4>
       </div>
       <div class="content">
         <h1>4.購買人資訊</h1>
-        <p>11111111111111111</p>
+        <form action="" style="display:flex; flex-direction: column;">
+          姓名:<input type="text" placeholder="請輸入姓名">
+          電話:<input type="text" placeholder="請輸入電話">
+          寄送地址:<input type="text" placeholder="請輸入寄送地址">
+        </form>
       </div>
     </div>
 </template>
@@ -144,9 +152,20 @@ init()
 .checkBtn{
   position: absolute;
   right: 0;
+  padding: 30px;
 }
 .content{
   margin-bottom: 30px;
+  border-image-slice:184 228 167 241;
+  border-image-width:50px 50px 50px 50px;
+  border-image-outset:0px 0px 0px 0px;
+  border-image-repeat:stretch stretch;
+  border-style:solid ;
+  border-image-source:url(../../assets/border.jpg);
+  padding: 50px;
+}
+input{
+  width: 20%;
 }
 
 @media (max-width: 768px){
@@ -156,6 +175,10 @@ init()
 
   .cartImg{
     display: none;
+  }
+
+  input{
+    width: 50%;
   }
 }
 

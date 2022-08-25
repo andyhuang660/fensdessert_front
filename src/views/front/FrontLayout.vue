@@ -30,8 +30,9 @@
       </n-drawer>
     </n-col>
   </n-row>
-<RouterView></RouterView>
-      <n-back-top   :visibility-height="10"/>
+
+  <RouterView></RouterView>
+  <n-back-top   :visibility-height="10"/>
     
    <n-layout-footer style="background-color: #ffee98;justify-content: space-around; padding-top: 30px;" >
     <div class="container">
@@ -168,7 +169,7 @@ h2 {
   nav {
     font-size: 1rem;
     /* padding: 1.5rem 0; */
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     justify-content: center;
     align-items: center;

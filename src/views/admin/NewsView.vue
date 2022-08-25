@@ -164,4 +164,11 @@ init()
 .n-dialog .n-dialog__icon {
   display: none !important;
 }
+
+.n-button .n-button--default-type .n-button--medium-type .n-button--color{
+  display: block;
+}
+.n-button{
+  margin: 20px 0px 5px 0px;
+}
 </style>

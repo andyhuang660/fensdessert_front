@@ -61,9 +61,9 @@
       </n-space>
     </div>
   <n-divider />
+  <n-pagination v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
 </div>
   </div>
-  <n-pagination v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
 </template>
 
 <script setup>
@@ -206,4 +206,12 @@ td {
 td img {
   height: 100%;
 }
+
+/* .n-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 1rem;
+} */
 </style>
