@@ -10,8 +10,8 @@
   </div>
   
   <div class="container">
-     <input style="width:200px; margin: 10px auto;display: block;" type="search" v-model="search" placeholder="尋找商品" />
-  <div class='wrap' style="background:url(../../assets/IMG_1071.PNG)">
+     <input style="width:200px;display: block;" type="search" v-model="search" placeholder="尋找商品" />
+  <div class='wrap' style="background:url(../../assets/IMG_1071.jpg)">
     <n-grid cols="1 s:2 m:3" responsive="screen" >
       <n-grid-item v-for="(product,idx) in sliceProducts" :key='idx'>
         <n-card v-if='sliceProducts.length>0'>
@@ -45,8 +45,7 @@
       </n-card>
       </n-grid-item>
     </n-grid>
-    <n-pagination v-if="search===''" v-model:page="page" :page-count="Math.ceil(products.length/pageSize)" style="float:right" :default-page-size="6" />
-    <n-pagination v-else v-model:page="page" v-model:page-size="pageSize" :page-count="Math.ceil(sliceProducts.length/pageSize)" style="float:right" :default-page-size="6" />
+    <n-pagination v-model:page="page" :page-count="2" style="float:right" :default-page-size="6" />
   </div>
   </div>
 </template>
@@ -64,16 +63,17 @@ const user = useUserStore()
 const showModal = ref(false)
 const { addCart } = user
 
-
 //分頁,搜尋
 const products = reactive([])
 const page = ref(1)
 const pageSize = 6
 const search = ref('')
+// const sliceProducts = computed(()=>{
+//   return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize)).filter(input => input.name.match(search.value))
+// })
 const sliceProducts = computed(()=>{
-  return products.slice((page.value*pageSize)-pageSize,(page.value*pageSize)).filter(input => input.name.includes(search.value))
+  return products.filter(item =>{return item.name.match(search.value)}).slice((page.value*pageSize)-pageSize,(page.value*pageSize))
 })
-
 const form = reactive({
   _id: '',
   image: [],
@@ -140,6 +140,10 @@ init()
 
 .imgDes {
   background-image: url(../../assets/IMG_1071.PNG);
+  padding: 2rem 0;
+}
+input {
+  margin: 2rem auto;
 }
 .imgDes img{
   height: 200px;

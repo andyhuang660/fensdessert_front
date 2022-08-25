@@ -17,7 +17,7 @@
                 <tr>
                   <td>{{user.account }}</td>
                   <td style="white-space:pre">{{ user.email }}</td>
-                  <n-button color="#ffcb98" @click="del(user._id, idx)">刪除</n-button>
+                  <td><n-button color="#ffcb98" @click="del(user._id, idx)">刪除</n-button></td>
                 </tr>
               </template>
             </tbody>
