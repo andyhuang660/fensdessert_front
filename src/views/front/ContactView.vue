@@ -1,6 +1,6 @@
 <template>
-  <div class='container'>
-    <div class="contactForm">
+  <div class='container' ref="form">
+    <n-form class="contactForm" @submit.prevent='submit'>
       <n-space vertical>
       <n-input v-model:value="name" type="text" placeholder="姓名" />
       <n-input v-model:value="phone" type="text" placeholder="電話" />
@@ -11,20 +11,53 @@
         placeholder="想問芬什麼問題"
       />
     </n-space>
-        <n-button strong secondary round type="warning">
+        <n-button strong secondary round type="warning" @click="send">
           送出
         </n-button>
-    </div>
+    </n-form>
   </div>
 </template>
 
 <script setup>
-import {  ref } from 'vue'
-const name= ref(null)
-const phone= ref(null)
-const email= ref(null)
-const value= ref(null)
+import {  ref,reactive } from 'vue'
+import { api } from '@/plugins/axios'
+import { useRouter } from 'vue-router'
+import Swal from "sweetalert2"
 
+const router = useRouter()
+const value= ref(null)
+const loading = ref(false)
+const form = reactive({
+  name: null,
+  phone: null,
+  email: null,
+  text:null
+})
+// const add = (e) => {
+//       e.preventDefault();
+//       if (form.value.reportValidity()) {
+//         alert.value = "送出";
+//       }
+//     };
+ const send = async () => {
+  loading.value = true
+  try {
+    await api.post('/contact', form)
+    await Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '送出成功'
+    })
+    router.push('/')
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: (error.isAxiosError && error.response.data) ? error.response.data.message : '發生錯誤'
+    })
+  }
+  loading.value = false
+}
 </script>
 
 <style scoped>
