@@ -109,7 +109,7 @@ const register = async () => {
   margin-top: 30px;
 }
 .n-form {
-  width: 30%;
+  width: auto;
   margin: auto;
   border: 3px solid rgb(255,203,152);
   border-radius: 30px;
@@ -123,7 +123,10 @@ const register = async () => {
 .n-form-item.n-form-item--top-labelled{
   margin-bottom: -15px;
 }
-@media screen and (max-width:768px){
+@media (max-width:768px){
+  .container{
+    width: 100% !important;
+  }
   .n-form {
   width: 50%;
   margin: auto;
@@ -132,4 +135,19 @@ const register = async () => {
   padding: 30px;
 }
 }
+
+@media (max-width:576px){
+  .container{
+    width: 100% !important;
+    height: calc(100vh - 150px) ;
+  }
+  .n-form {
+  width: 80%;
+  margin: auto;
+  border: 3px solid rgb(255,203,152);
+  border-radius: 30px;
+  padding: 30px;
+}
+}
+
 </style>
