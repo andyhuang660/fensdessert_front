@@ -11,13 +11,9 @@
         placeholder="想問芬什麼問題"
       />
     </n-space>
-    <n-row :gutter="[0, 24]">
-      <n-col :span="24">
         <n-button strong secondary round type="warning">
           送出
         </n-button>
-      </n-col>
-    </n-row>
     </div>
   </div>
 </template>
@@ -55,6 +51,24 @@ const value= ref(null)
   border-image-repeat: stretch stretch;
   border-style: solid;
   margin: auto;
+}
+.n-button{
+  margin-top: 20px !important;
+}
+
+@media (max-width:576px){
+  .container{
+    width: auto;
+    height: calc(100vh - 270px) ;
+    border-image-source: url(../../assets/1111.png) ;
+    border-image-slice: 300;
+    border-image-width: 200px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
+    margin: auto;
+  }
+
 }
 
 </style>

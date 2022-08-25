@@ -74,11 +74,13 @@ const login = () => {
   border: 3px solid rgb(255,203,152);
   border-radius: 30px;
   padding: 30px;
+  box-sizing: border-box;
 }
 
 .container{
   height: calc(100vh - 365px) ;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 .forgetPWD{
   margin-left: 30px;
@@ -88,6 +90,7 @@ const login = () => {
 @media (max-width:768px){
   .container{
     width: 100% !important;
+    height: calc(100vh - 365px) ;
   }
   .n-form {
   margin: auto;
@@ -112,4 +115,17 @@ const login = () => {
   border-radius: 30px;
 }
 }
+
+@media (min-height:400px){
+  .container[data-v-23a4ffce]{
+    height: 100%;
+  }
+}
+
+@media (min-height:768px){
+  .container[data-v-23a4ffce]{
+    height: calc(100vh - 365px) ;
+  }
+}
+
 </style>
