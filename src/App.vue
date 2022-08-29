@@ -2,6 +2,10 @@
 import { useUserStore } from '@/stores/user'
 import { RouterView } from 'vue-router'
 import { NConfigProvider } from 'naive-ui'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const themeOverrides = {
   Menu : {
     itemTextColor: '#575757',

@@ -29,7 +29,7 @@
 
   <n-divider />
 
-   <div class="wrap">
+   <div class="wrap" data-aos="fade-up" data-aos-duration="500">
     <h1 style="font-family:'華康布丁體'">最新消息</h1>
     <n-grid cols="1 s:2 m:3" responsive="screen">
       <n-grid-item v-for='artical in news' :key='artical._id' hoverable>
