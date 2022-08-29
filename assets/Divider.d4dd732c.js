@@ -1,4 +1,4 @@
-import{c as f,m as p,aa as c,n as s,s as o,e as u,f as x,A as v,j as b,B as C,h as d,$ as _}from"./index.6d300307.js";const $=i=>{const{textColor1:t,dividerColor:n,fontWeightStrong:l}=i;return{textColor:t,color:n,fontWeight:l}},w={name:"Divider",common:f,self:$},y=w,z=p("divider",`
+import{c as f,m as p,aa as c,n as s,s as o,e as u,f as x,A as v,j as b,B as C,h as d,$ as _}from"./index.ecbdd361.js";const $=i=>{const{textColor1:t,dividerColor:n,fontWeightStrong:l}=i;return{textColor:t,color:n,fontWeight:l}},w={name:"Divider",common:f,self:$},y=w,z=p("divider",`
  position: relative;
  display: flex;
  width: 100%;
