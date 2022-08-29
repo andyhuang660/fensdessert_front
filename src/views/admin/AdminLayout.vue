@@ -59,6 +59,14 @@ const menuOptions = [
     }, {default:()=>"商品管理"}),
     key:"productsAdmin"
   },
+  {
+    label: () => h(RouterLink, {
+      to:{ 
+        path:"/admin/contactAdmin"
+        }
+    }, {default:()=>"聯絡我們"}),
+    key:"contactAdmin"
+  },
 ];
 
 </script>

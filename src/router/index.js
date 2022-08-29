@@ -159,6 +159,16 @@ const router = createRouter({
             login:true,
             admin:true
           }
+        },
+        {
+          path: 'contactAdmin',
+          name: 'admin-contact',
+          component: () => import('@/views/admin/ContactView.vue'),
+          meta:{
+            title:'聯絡我們',
+            login:true,
+            admin:true
+          }
         }
       ]
     }
