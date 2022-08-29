@@ -107,6 +107,7 @@ const register = async () => {
   /* height: calc(100vh - 365px) ; */
   margin: auto;
   margin-top: 30px;
+  padding-bottom: 50px
 }
 .n-form {
   width: auto;
